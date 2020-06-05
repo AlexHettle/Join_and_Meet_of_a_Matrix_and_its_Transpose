@@ -4,6 +4,8 @@
 #include <time.h>
 #include <string>
 using matrix = std::vector<std::vector<int>>;
+//creates a randomly generated 5*5 boolean matrix
+//(matrix that only uses 0's and 1's)
 matrix Matrix_creator(){
     matrix v(5, std::vector<int>(5,0));
     for(auto &line:v){
@@ -13,6 +15,7 @@ matrix Matrix_creator(){
     }
     return v;
 }
+//Prints two matrices next to each other
 void print_2_matrices(matrix m1,matrix m2){
     for(int i=0;i<5;i++){
         std::cout<<"\t";
@@ -26,6 +29,9 @@ void print_2_matrices(matrix m1,matrix m2){
         std::cout<<"\n";
     }
 }
+//Goes through each position of one matrix
+//and compares it to same position of
+//the other to find the OR of that position
 matrix join(matrix m1,matrix m2){
     matrix mjoin(5, std::vector<int>(5,0));
     for(int i=0;i<5;i++){
@@ -37,6 +43,9 @@ matrix join(matrix m1,matrix m2){
     }
     return mjoin;
 }
+//Goes through each position of one matrix
+//and compares it to same position of
+//the other to find the AND of that position
 matrix meet(matrix m1,matrix m2){
     matrix mmeet(5, std::vector<int>(5,0));
     for(int i=0;i<5;i++){
@@ -48,6 +57,7 @@ matrix meet(matrix m1,matrix m2){
     }
     return mmeet;
 }
+//Finds the transpose of a matrix
 matrix transpose(matrix m){
     matrix transposed_matrix(5, std::vector<int>(5,0));
     for(int i=0;i<5;i++){
@@ -57,6 +67,9 @@ matrix transpose(matrix m){
     }
     return transposed_matrix;
 }
+//goes through the process of creating a matrix,
+//findings its transpose, and then finding the AND and
+//OR of the two matrices
 void process(){
     std::string choice;
     matrix m1=Matrix_creator();
@@ -77,3 +90,4 @@ int main(){
     srand(time(NULL));
     process();
 }
+
